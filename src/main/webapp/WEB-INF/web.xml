@@ -4,6 +4,16 @@
 	id="WebApp_ID" version="2.5">
 
 	<display-name>taxacao2</display-name>
+	  
+	<context-param>
+        <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+        <param-value>messages</param-value>
+    </context-param>
+    
+    <context-param>
+        <param-name>javax.servlet.jsp.jstl.fmt.locale</param-name>
+        <param-value>pt_BR</param-value>
+    </context-param>
 
 	<context-param>
 		<param-name>br.com.caelum.vraptor.packages</param-name>

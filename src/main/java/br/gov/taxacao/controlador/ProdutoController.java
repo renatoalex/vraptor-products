@@ -1,5 +1,6 @@
 package br.gov.taxacao.controlador;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import br.gov.taxacao.modelo.Produto;
@@ -11,6 +12,7 @@ import br.com.caelum.vraptor.Put;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
+import br.com.caelum.vraptor.validator.ValidationMessage;
 
 @Resource
 public class ProdutoController {
@@ -32,7 +34,7 @@ public class ProdutoController {
 	
 	@Post("/produtos")
 	public void create(Produto produto) {
-		validator.validate(produto);
+		validateFields(produto);
 		validator.onErrorUsePageOf(this).newProduto();
 		repository.create(produto);
 		result.redirectTo(this).index();
@@ -45,7 +47,7 @@ public class ProdutoController {
 	
 	@Put("/produtos")
 	public void update(Produto produto) {
-		validator.validate(produto);
+		validateFields(produto);
 		validator.onErrorUsePageOf(this).edit(produto);
 		repository.update(produto);
 		result.redirectTo(this).index();
@@ -66,4 +68,9 @@ public class ProdutoController {
 		repository.destroy(repository.find(produto.getId()));
 		result.redirectTo(this).index();  
 	}
+	
+	private void validateFields(Produto produto){
+		validator.validate(produto);
+	}
+	
 }

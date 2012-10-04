@@ -2,12 +2,13 @@
 <head>
 <title>Produto [index]</title>
 </head>
-<body>
+<body> 
 	<div class="container well">
 		<h1>Lista de produtos cadastrados</h1>
 
 		<table class="table table-striped table-condensed">
 			<tr>
+				<th></th>
 				<th>Nome</th>
 				<th>Preço</th>
 				<th></th>
@@ -17,8 +18,13 @@
 
 			<c:forEach items="${produtoList}" var="produto">
 				<tr <c:if test="${empty produto.preco}">class="error"</c:if>>
+					<td><a href="#" class="thumbnail"> <img
+							src="http://placehold.it/160x120" alt="">
+					</a>
 					<td>${produto.nome}</td>
-					<td>${produto.preco}</td>
+					<td><c:if test="${empty produto.preco}">
+							<span class="label label-important">Preço não informado</span>
+						</c:if>${produto.precoFormatado}</td>
 					<td><a
 						href="${pageContext.request.contextPath}/produtos/${produto.id}"
 						class="btn btn-info"><i class="icon-info-sign"></i>detalhes</a></td>
@@ -42,7 +48,7 @@
 
 		<br /> <a href="${pageContext.request.contextPath}/produtos/new"
 			class="btn btn-primary"><i class="icon-plus"></i>Novo Produto</a>
-	</div>	
+	</div>
 
 
 </body>

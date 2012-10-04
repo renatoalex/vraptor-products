@@ -1,4 +1,4 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <head>
 	<title>Produto [show]</title>
 </head>
@@ -9,7 +9,7 @@
 	</p>
 	<p>
 		<b>Preço:</b>
-		${produto.preco}
+		${produto.precoFormatado}
 	</p>
 
 	<a href="${pageContext.request.contextPath}/produtos/${produto.id}/edit">Editar</a>
